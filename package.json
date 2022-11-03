@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:stallion.runScript"
+    "onCommand:post"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "stallion.runScript",
-        "title": "Run in Cavalry"
+        "command": "post",
+        "title": "Send to Cavalry"
       }
     ]
   },

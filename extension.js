@@ -8,21 +8,66 @@ function activate(context) {
 	// const socketPort = workspace
 	// 	.getConfiguration('languageServerExample')
 	// 	.get('port', 1234)
+	
 	console.log('"stallion" is active')
-	let disposable = commands.registerCommand('stallion.runScript', async function () {
-		window.showInformationMessage('Script executed in Cavalry')
-		// TODO: Temp save files that are not saved
-		// https://github.com/microsoft/vscode-extension-samples/tree/main/fsprovider-sample
-		// TODO: Check if a text editor exists and is not empty
-		// TODO: Make sure it's Javascript
-		const filePath = window.activeTextEditor.document.uri.fsPath
-		console.log(filePath)
-		const result = await axios.post(
-			`http://127.0.0.1:8080/post`,
-			{ data: filePath }
-		).catch(console.error)
-		console.log(`Post ${result.data}`)
+
+	const server = `http://127.0.0.1:8080/post`
+
+	const disposable = commands.registerCommand('post', async () => {
+		const doc = window.activeTextEditor?.document
+
+		if (!doc) {
+			window.showWarningMessage('No active document')
+			return
+		}
+
+		if (doc.isUntitled) {
+			const saved = await window.showSaveDialog()
+			console.log(saved)
+			if (saved == undefined) {
+				return
+			}
+		}
+
+		if (doc.uri.scheme !== 'file') {
+			const msg = 'The document needs to be a saved file'
+			window.showErrorMessage(msg)
+			return
+		}
+
+		if (doc.languageId !== 'javascript') {
+			const msg = 'The document\'s language needs to be JavaScript'
+			window.showErrorMessage(msg)
+			return
+		}
+
+		if (doc.isDirty) {
+			const answer = await window.showWarningMessage(
+				'Document has unsaved changes. Save changes?', 'Cancel', 'Save'
+			)
+			if (answer === 'Save') {
+				doc.save()
+			} else {
+				return
+			}
+		}
+
+		try {
+			const filePath = doc.uri.fsPath
+			console.log(filePath)
+			const result = await axios.post(server, { data: filePath })
+			console.log(result)
+			if (result?.statusText === 'OK') {
+				window.showInformationMessage('Successfully sent to Cavalry')
+			} else {
+				throw new Error('Failed sending to Cavalry')
+			}
+		} catch (error) {
+			console.log(error)
+			window.showErrorMessage(error.message)
+		}
 	})
+
 	context.subscriptions.push(disposable)
 }
 
