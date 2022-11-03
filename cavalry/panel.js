@@ -7,17 +7,24 @@ server.addCallbackObject(cb)
 
 ui.setTitle('Stallion')
 const label = new ui.Label(`Listening on ${address}:${port}`)
-ui.add(label)
+var layout = new ui.HLayout()
+layout.addStretch()
+layout.add(label)
+layout.addStretch()
+ui.add(layout);
 ui.show()
 
 function Callbacks() {
     this.onPost = () => {
-        console.log(`Post received, queue length: ${server.postCount()}`)
         const post = server.getNextPost()
-        console.log(Object.keys(post))
         const result = JSON.parse(post.result)
+        console.log(`Stallion: Received "${result.data}"`)
         const path = result.data
-        console.log(path)
-        api.load(path)
+        const success = api.load(path)
+        console.log(
+            success 
+                ? 'Stallion: Script successfully executed'
+                : 'Stallion: Script failed to execute'
+        )
     }
 }
