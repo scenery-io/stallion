@@ -15,6 +15,10 @@ Unofficial extension to send scripts from VSCode to [Cavalry](https://cavalry.sc
 -   VSCode (tested only on 1.73.1)
 -   Cavalry 1.4.1 (currently in beta)
 
+## Installation
+
+Look for `stallion` in the VSCode extension tab and click on the chevron next to the `install` button. Choose `Install pre-release version`. Otherwise it will throw an error.
+
 ## Usage
 
 1. Run the `Install Stallion Panel` command from VSCode. This will copy the Cavalry script to the scripts folder. You only have to do this once. Now you can open the script in Cavalry from `Scripts > stallion`. The script will start a server that listens to the data sent by VSCode.

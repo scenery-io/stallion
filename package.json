@@ -2,9 +2,8 @@
   "name": "stallion",
   "displayName": "Stallion",
   "description": "A scripting bridge for Cavalry",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./out/main.js",
-  "type": "module",
   "publisher": "Supasupply",
   "repository": {
     "type": "git",
