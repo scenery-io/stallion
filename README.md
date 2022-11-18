@@ -1,22 +1,40 @@
 # stallion
 
-This is the README for your extension "stallion". After writing up a brief description, we recommend including the following sections.
+Unofficial extension to send scripts from VSCode to [Cavalry](https://cavalry.scenegroup.co/). This is a temporary solution until the [Cavalry](https://cavalry.scenegroup.co/) arrives with a more robust solution.
+
+> **Warning** This extension is still in alpha stage and hardly tested. Please report any issues you run into.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+-   Send scripts to Cavalry
+-   Install Stallion script
+-   Incomplete type definitions
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+-   VSCode (tested only on 1.73.1)
+-   Cavalry 1.4.1 (currently in beta)
 
-## Extension Settings
+## Usage
+
+1. Run the `Install Stallion Panel` command from VSCode. This will copy the Cavalry script to the scripts folder. You only have to do this once. Now you can open the script in Cavalry from `Scripts > stallion`. The script will start a server that listens to the data sent by VSCode.
+
+    If it was sucessful the Log Window will show:
+
+    ```bash
+    Server Started at: 127.0.0.1, port: 8080
+    ```
+
+2. Run the `Send To Cavalry` command from an open editor. The text from the editor will be sent to Cavalry, so it doesn't have to be a saved file. Focus the Cavalry window and check the Log Window for any errors.
+
+    If it was sucessful the Log Window will show:
+
+    ```bash
+    [Info]
+    JavaScript: Stallion: Script successfully executed
+    ```
+
+<!-- ## Extension Settings
 
 Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
@@ -24,42 +42,9 @@ For example:
 
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+-   `myExtension.enable`: Enable/disable this extension.
+-   `myExtension.thing`: Set to `blah` to do something. -->
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+The server address and port are hardcoded (`127.0.0.1:8000`). Make sure nothing else is using this port. This will be made configurable in a later update.

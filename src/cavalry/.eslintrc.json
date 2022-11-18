@@ -1,0 +1,8 @@
+{
+    "globals": {
+        "api": "readonly",
+        "cavalry": "readonly",
+        "ctx": "readonly",
+        "ui": "readonly"
+    }
+}
