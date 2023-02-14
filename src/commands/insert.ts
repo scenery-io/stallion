@@ -1,4 +1,4 @@
-import { window, Position, extensions } from 'vscode'
+import { window, Position, extensions, languages } from 'vscode'
 import { publisher, name } from '../../package.json'
 
 export default async () => {
@@ -10,16 +10,18 @@ export default async () => {
 	}
 
 	if (doc.languageId !== 'javascript') {
-		window.showWarningMessage('Language is not JavaScript')
+		languages.setTextDocumentLanguage(doc, 'javascript')
+		window.showInformationMessage('Language set to JavaScript')
 	}
 
 	try {
 		const extensionId = [publisher, name].join('.')
 		const stallion = extensions.getExtension(extensionId)
 		if (!stallion) throw new Error(`Extension not found: ${extensionId}`)
-		const path = stallion.extensionPath
+		const extPath = stallion.extensionPath
 		const pkgName = '@scenery/cavalry-types'
-		const snippet = `/// <reference path="${path}/node_modules/${pkgName}/index.d.ts"/>\n\n`
+		const path = [extPath, 'node_modules', pkgName, 'index.d.ts'].join('/')
+		const snippet = `/// <reference path="${path}"/>\n\n`
 		await editor.edit((e) => e.insert(new Position(0, 0), snippet))
 	} catch (error) {
 		console.log(error)

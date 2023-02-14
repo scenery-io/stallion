@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
+## [0.1.1] - 2023-02-14
+
+### Fixed
+
+-   Language is automatically set to JavaScript with the `Insert Cavalry Types` command
+-   Consistent slashes in reference path
+-   More detailed instructions in readme
+
 ## [0.1.0] - 2023-02-14
 
 ### Added

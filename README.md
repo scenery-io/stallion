@@ -22,28 +22,35 @@ VSCode extension to send scripts to [Cavalry](https://cavalry.scenegroup.co/).
 
 ## Installation
 
-[Install `Stallion`](https://marketplace.visualstudio.com/items?itemName=Scenery.cavalry-bridge) from the marketplace or look for `Stallion` in the VSCode extension tab and click on the chevron next to the `install` button. Choose `Install pre-release version`. Otherwise it will throw an error.
+[Install `Stallion`](https://marketplace.visualstudio.com/items?itemName=Scenery.cavalry-bridge) from the marketplace or look for `Stallion` in the VSCode extension tab and click the `install` button.
 
 ## Usage
 
-1. Run the `Install Stallion Script` command from VSCode. This will copy the Cavalry script to the scripts folder. Now you can open the script in Cavalry from `Scripts > Stallion`. The script will start a server that listens to the data sent by VSCode.
+The extension exposes the following commands to the Command Palette (`View > Command Palette`).
 
-    If it was sucessful the Log Window will show:
+1.  ### `Install Stallion Script`
 
-    ```bash
-    Server Started at: 127.0.0.1, port: 8080
-    ```
+    This will copy the Cavalry script to the scripts folder. Now you can open the script in Cavalry from `Scripts > Stallion`. The script will start a server that listens to the data sent by VSCode.
 
-2. Run the `Send To Cavalry` command from an open editor. The text from the editor will be sent to Cavalry, so it doesn't have to be a saved file. Focus the Cavalry window and check the Log Window for any errors.
+        If it was sucessful the Log Window will show:
 
-    If it was sucessful the Log Window will show:
+        ```bash
+        Server Started at: 127.0.0.1, port: 8080
+        ```
 
-    ```bash
-    [Info]
-    JavaScript: Stallion: Script successfully executed
-    ```
+2.  ### `Send To Cavalry`
 
-3. Run the `Insert Cavalry Types` command to enable auto-complete for Cavalry's scripting API. This inserts a comment at the top of your file which references the [cavalry-types](https://github.com/scenery-io/cavalry-types).
+    This will send the text from an open editor to Cavalry. It doesn't have to be a saved file. Focus the Cavalry window and check the Log Window for any errors.
+
+        If it was sucessful the Log Window will show:
+
+        ```bash
+        [Info]
+        JavaScript: Stallion: Script successfully executed
+        ```
+
+3.  ### `Insert Cavalry Types`
+    This will enable auto-complete for Cavalry's scripting API. It inserts a comment at the top of the open editor which references the [cavalry-types](https://github.com/scenery-io/cavalry-types).
 
 <!-- ## Extension Settings
 
