@@ -1,33 +1,21 @@
-const version = '1.4.0'
-const valid = !cavalry.versionLessThan(version)
+const version = '1.4.1'
 const server = new api.WebServer()
+const invalid = cavalry.versionLessThan(version)
 
-if (!valid) {
-    console.error(`Stallion requires Cavalry ${version} or higher`)
-} else {
-    const port = 8080
-    const address = '127.0.0.1'
-    server.listen(address, port)
-    const cb = new Callbacks()
-    server.addCallbackObject(cb)
-    
-    const label = new ui.Label(`Listening on ${address}:${port}`)
-    const layout = new ui.HLayout()
-    layout.addStretch()
-    layout.add(label)
-    layout.addStretch()
-    ui.setTitle('Stallion')
-    ui.add(layout)
-    ui.show()
+if (invalid) {
+    throw new Error(`Stallion requires Cavalry ${version} or higher`)
 }
 
-function Callbacks() {
-    this.onPost = () => {
+class Callbacks {
+    onPost = () => {
         const post = server.getNextPost()
         const result = JSON.parse(post.result)
         const script = result.data
         console.log(`Stallion: Received ${script.length} chars`)
-        const success = api.exec(randomID(), script)
+        // NOTE: Unique `id` eventually enforced by Cavalry
+        const id = Math.random().toString(16).slice(2)
+        const iife = `(function(){${script}})()`
+        const success = api.exec(id, iife)
         if (success) {
             console.log('Stallion: Script successfully executed')
         } else {
@@ -36,7 +24,17 @@ function Callbacks() {
     }
 }
 
-// NOTE: Not yet needed but eventually enforced by Cavalry
-function randomID() {
-    return Math.random().toString(16).slice(2)
-}
+const port = 8080
+const address = '127.0.0.1'
+server.listen(address, port)
+const cb = new Callbacks()
+server.addCallbackObject(cb)
+
+const label = new ui.Label(`Listening on ${address}:${port}`)
+const layout = new ui.HLayout()
+layout.addStretch()
+layout.add(label)
+layout.addStretch()
+ui.setTitle('Stallion')
+ui.add(layout)
+ui.show()

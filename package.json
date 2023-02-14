@@ -1,70 +1,77 @@
 {
-  "name": "stallion",
-  "displayName": "Stallion",
-  "description": "A scripting bridge for Cavalry",
-  "version": "0.0.2",
-  "main": "./out/main.js",
-  "publisher": "Supasupply",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/klustre/stallion.git"
-  },
-  "engines": {
-    "vscode": "^1.72.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:post",
-    "onCommand:install"
-  ],
-  "contributes": {
-    "commands": [
-      {
-        "command": "post",
-        "title": "Send To Cavalry"
-      },
-      {
-        "command": "install",
-        "title": "Install Stallion Panel"
-      }
-    ]
-  },
-  "scripts": {
-    "start": "npm run copy && npm run esbuild-watch",
-    "vscode:prepublish": "npm run copy && npm run esbuild-base -- --minify",
-    "esbuild-base": "esbuild ./src/extension.js --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
-    "esbuild": "npm run esbuild-base -- --sourcemap",
-    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "node ./test/runTest.js",
-    "publish": "vsce publish --pre-release",
-    "copy": "mkdir -p ./out && cp ./src/cavalry/stallion.js ./out"
-  },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 4,
-    "semi": false,
-    "singleQuote": true,
-    "useTabs": true,
-    "bracketSpacing": true,
-    "arrowParens": "always"
-  },
-  "dependencies": {
-    "axios": "^1.1.3"
-  },
-  "devDependencies": {
-    "@types/glob": "^8.0.0",
-    "@types/mocha": "^10.0.0",
-    "@types/node": "16.x",
-    "@types/vscode": "^1.72.0",
-    "@vscode/test-electron": "^2.1.5",
-    "esbuild": "^0.15.14",
-    "eslint": "^8.24.0",
-    "glob": "^8.0.3",
-    "mocha": "^10.0.0",
-    "typescript": "^4.8.4"
-  }
+	"name": "cavalry-bridge",
+	"displayName": "Stallion",
+	"description": "A scripting bridge for Cavalry",
+	"version": "0.1.0",
+	"main": "./out/main.js",
+	"publisher": "Scenery",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/scenery-io/stallion.git"
+	},
+	"icon": "images/icon.png",
+	"engines": {
+		"vscode": "^1.72.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:stallion.post",
+		"onCommand:stallion.install",
+		"onCommand:stallion.insert"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "stallion.post",
+				"title": "Send To Cavalry"
+			},
+			{
+				"command": "stallion.install",
+				"title": "Install Stallion Script"
+			},
+			{
+				"command": "stallion.insert",
+				"title": "Insert Cavalry Types"
+			}
+		]
+	},
+	"scripts": {
+		"start": "npm run copy && npm run esbuild-watch",
+		"vscode:prepublish": "npm run copy && npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.js --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js",
+		"publish": "vsce publish",
+		"copy": "mkdir -p ./out && cp ./src/cavalry/Stallion.js ./out"
+	},
+	"prettier": {
+		"trailingComma": "es5",
+		"tabWidth": 4,
+		"semi": false,
+		"singleQuote": true,
+		"useTabs": true,
+		"bracketSpacing": true,
+		"arrowParens": "always"
+	},
+	"dependencies": {
+		"@scenery/cavalry-types": "^0.1.0",
+		"axios": "^1.1.3"
+	},
+	"devDependencies": {
+		"@types/glob": "^8.0.0",
+		"@types/mocha": "^10.0.0",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.72.0",
+		"@vscode/test-electron": "^2.1.5",
+		"esbuild": "^0.15.14",
+		"eslint": "^8.24.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.8.4"
+	}
 }

@@ -1,27 +1,32 @@
+<img src="./images/icon.png" alt="Stallion icon" align="left" width="86" style="margin-right: -15px;" />
+
 # stallion
 
-Unofficial extension to send scripts from VSCode to [Cavalry](https://cavalry.scenegroup.co/). This is a temporary solution until the [Cavalry](https://cavalry.scenegroup.co/) arrives with a more robust solution.
+<br/>
 
-> **Warning** This extension is still in alpha stage and hardly tested. Please report any issues you run into.
+VSCode extension to send scripts to [Cavalry](https://cavalry.scenegroup.co/).
+
+> **Warning**  
+> This extension is still in beta stage. Please report any issues you run into.
 
 ## Features
 
 -   Send scripts to Cavalry
--   Install Stallion script
--   Incomplete type definitions
+-   Install the Stallion script
+-   Insert Cavalry's Typescript definitions
 
 ## Requirements
 
--   VSCode (tested only on 1.73.1)
--   Cavalry 1.4.1 (currently in beta)
+-   [VSCode](https://code.visualstudio.com/)
+-   [Cavalry](https://cavalry.scenegroup.co/) 1.4.1+
 
 ## Installation
 
-Look for `stallion` in the VSCode extension tab and click on the chevron next to the `install` button. Choose `Install pre-release version`. Otherwise it will throw an error.
+[Install `Stallion`](https://marketplace.visualstudio.com/items?itemName=Scenery.stallion) from the marketplace or look for `Stallion` in the VSCode extension tab and click on the chevron next to the `install` button. Choose `Install pre-release version`. Otherwise it will throw an error.
 
 ## Usage
 
-1. Run the `Install Stallion Panel` command from VSCode. This will copy the Cavalry script to the scripts folder. You only have to do this once. Now you can open the script in Cavalry from `Scripts > stallion`. The script will start a server that listens to the data sent by VSCode.
+1. Run the `Install Stallion Script` command from VSCode. This will copy the Cavalry script to the scripts folder. Now you can open the script in Cavalry from `Scripts > Stallion`. The script will start a server that listens to the data sent by VSCode.
 
     If it was sucessful the Log Window will show:
 
@@ -38,6 +43,8 @@ Look for `stallion` in the VSCode extension tab and click on the chevron next to
     JavaScript: Stallion: Script successfully executed
     ```
 
+3. Run the `Insert Cavalry Types` command to enable auto-complete for Cavalry's scripting API. This inserts a comment at the top of your file which references the [cavalry-types](https://github.com/scenery-io/cavalry-types).
+
 <!-- ## Extension Settings
 
 Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
@@ -51,4 +58,12 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-The server address and port are hardcoded (`127.0.0.1:8000`). Make sure nothing else is using this port. This will be made configurable in a later update.
+1. The server address and port are hardcoded (`127.0.0.1:8080`). Make sure nothing else is using this port. This will be made configurable in a later update.
+
+2. Any UI elements sent to the Stallion panel in Cavalry will not be removed. Close and reopen the Stallion panel and send the script again.
+
+3. `ui.scriptLocation` returns the path of the Stallion script, not the path to your own script.
+
+#### Icon Credits
+
+The icon is [Horse](https://thenounproject.com/icon/horse-2128337/) by Buztas Linggar from [Noun Project](https://thenounproject.com/)
