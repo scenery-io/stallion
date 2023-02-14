@@ -22,7 +22,7 @@ VSCode extension to send scripts to [Cavalry](https://cavalry.scenegroup.co/).
 
 ## Installation
 
-[Install `Stallion`](https://marketplace.visualstudio.com/items?itemName=Scenery.stallion) from the marketplace or look for `Stallion` in the VSCode extension tab and click on the chevron next to the `install` button. Choose `Install pre-release version`. Otherwise it will throw an error.
+[Install `Stallion`](https://marketplace.visualstudio.com/items?itemName=Scenery.cavalry-bridge) from the marketplace or look for `Stallion` in the VSCode extension tab and click on the chevron next to the `install` button. Choose `Install pre-release version`. Otherwise it will throw an error.
 
 ## Usage
 
