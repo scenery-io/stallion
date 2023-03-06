@@ -2,7 +2,7 @@
 	"name": "cavalry-bridge",
 	"displayName": "Stallion",
 	"description": "A scripting bridge for Cavalry",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"main": "./out/main.js",
 	"publisher": "Scenery",
 	"repository": {
@@ -17,9 +17,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:stallion.post",
-		"onCommand:stallion.install",
-		"onCommand:stallion.insert"
+		"onStartupFinished"
 	],
 	"contributes": {
 		"commands": [
@@ -59,10 +57,13 @@
 		"arrowParens": "always"
 	},
 	"dependencies": {
-		"@scenery/cavalry-types": "^0.1.0",
-		"axios": "^1.1.3"
+		"@scenery/cavalry-types": "^0.2.2",
+		"axios": "^1.1.3",
+		"firstline": "^2.0.2",
+		"tempy": "^3.0.0"
 	},
 	"devDependencies": {
+		"@types/firstline": "^2.0.2",
 		"@types/glob": "^8.0.0",
 		"@types/mocha": "^10.0.0",
 		"@types/node": "16.x",

@@ -1,21 +1,23 @@
-const version = '1.4.1'
+// VERSION 0.2.0 // TODO: Replace with `version` from `package.json`
+const SUPPORTED_VERSION = '1.5.2'
 const server = new api.WebServer()
-const invalid = cavalry.versionLessThan(version)
+const invalid = cavalry.versionLessThan(SUPPORTED_VERSION)
 
 if (invalid) {
-    throw new Error(`Stallion requires Cavalry ${version} or higher`)
+    throw new Error(`Stallion requires Cavalry ${SUPPORTED_VERSION} or higher`)
 }
 
 class Callbacks {
     onPost = () => {
         const post = server.getNextPost()
         const result = JSON.parse(post.result)
-        const script = result.data
-        console.log(`Stallion: Received ${script.length} chars`)
-        // NOTE: Unique `id` eventually enforced by Cavalry
-        const id = Math.random().toString(16).slice(2)
-        const iife = `(function(){${script}})()`
-        const success = api.exec(id, iife)
+        const { path } = result
+        console.log(`Stallion: Received script "${path}"`)
+        const exists = api.filePathExists(path)
+        if (!exists) {
+            return console.error(`No script found ${path}`)
+        }
+        const success = ui.runFileScript(path)
         if (success) {
             console.log('Stallion: Script successfully executed')
         } else {
@@ -26,9 +28,10 @@ class Callbacks {
 
 const port = 8080
 const address = '127.0.0.1'
-server.listen(address, port)
 const cb = new Callbacks()
+server.listen(address, port)
 server.addCallbackObject(cb)
+server.setHighFrequency()
 
 const label = new ui.Label(`Listening on ${address}:${port}`)
 const layout = new ui.HLayout()

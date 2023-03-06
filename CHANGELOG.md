@@ -12,6 +12,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
+## [0.2.0] - 2023-03-06
+
+### Added
+
+-   Scripts with a UI now run in a separate context
+-   Stallion is installed automatically
+-   Types for Cavalry 1.5.2
+
+### Changed
+
+-   Minimum supported version is Cavalry 1.5.2
+-   Editor contents are saved to a temp file
+-   Scripts with a UI automatically focus Cavalry
+-   Scripts are received quicker by the server
+
+### Removed
+
+-   `Install Stallion` command in favor of auto-install
+-   Support for Cavalry versions lower than 1.5.2
+
+### Fixed
+
+-   `ui.scriptLocation` returned the path of the Stallion script
+
 ## [0.1.1] - 2023-02-14
 
 ### Fixed
