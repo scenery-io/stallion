@@ -14,13 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.1] - 2023-04-12
 
-### Added
-
--   Mentions the Stallion script panel in the readme
-
 ### Fixed
 
 -   ENOENT error when the Cavalry scripts folder doesn't exist
+-   Mentions the Stallion script panel in the readme
 
 ### Removed
 
