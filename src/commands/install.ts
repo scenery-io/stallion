@@ -1,5 +1,5 @@
 import { existsSync } from 'fs'
-import { copyFile } from 'fs/promises'
+import { copyFile, mkdir } from 'fs/promises'
 import { homedir, platform } from 'os'
 import { join } from 'path'
 import { window } from 'vscode'
@@ -15,11 +15,14 @@ export default async () => {
 		const basePath = isMac
 			? join(userPath, 'Library', 'Application Support')
 			: join(userPath, 'AppData', 'Roaming')
-		const scriptsFolder = join('Cavalry', 'Scripts')
-		const target = join(basePath, scriptsFolder, scriptName)
+		const scriptsFolder = join(basePath, 'Cavalry', 'Scripts')
+		const target = join(scriptsFolder, scriptName)
+		if (!existsSync(scriptsFolder)) {
+			await mkdir(scriptsFolder)
+		}
 		if (existsSync(target)) {
 			// TODO: Replace with `version` from `package.json`
-			const pkgVersion = '0.2.0'
+			const pkgVersion = '0.2.1'
 			const line = await firstline(target)
 			const version = line
 				.match(/VERSION \d+.\d+.\d+/)?.[0]

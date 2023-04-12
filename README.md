@@ -26,7 +26,9 @@ VSCode extension to send scripts to [Cavalry](https://cavalry.scenegroup.co/).
 
 ## Usage
 
-The extension exposes the following commands to the Command Palette (`View > Command Palette`).
+To send scripts to Cavalry the Stallion script panel needs to be open in Cavalry. After the extension is installed the Stallion script should be available in Cavalry via `Scripts > Stallion`.
+
+The VSCode extension exposes the following commands to the Command Palette (`View > Command Palette`).
 
 1.  ### `Send To Cavalry`
 
