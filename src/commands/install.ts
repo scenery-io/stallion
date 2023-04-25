@@ -4,6 +4,7 @@ import { homedir, platform } from 'os'
 import { join } from 'path'
 import { window } from 'vscode'
 import firstline from 'firstline'
+import { version } from '../../package.json'
 
 export default async () => {
 	try {
@@ -22,12 +23,12 @@ export default async () => {
 		}
 		if (existsSync(target)) {
 			// TODO: Replace with `version` from `package.json`
-			const pkgVersion = '0.2.1'
 			const line = await firstline(target)
-			const version = line
+			const pkgVersion = version
+			const scriptVersion = line
 				.match(/VERSION \d+.\d+.\d+/)?.[0]
 				.replace('VERSION ', '')
-			if (version === pkgVersion) {
+			if (scriptVersion === pkgVersion) {
 				return
 			}
 		}
