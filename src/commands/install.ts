@@ -22,7 +22,6 @@ export default async () => {
 			await mkdir(scriptsFolder)
 		}
 		if (existsSync(target)) {
-			// TODO: Replace with `version` from `package.json`
 			const line = await firstline(target)
 			const pkgVersion = version
 			const scriptVersion = line
