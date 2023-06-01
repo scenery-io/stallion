@@ -1,4 +1,3 @@
-// VERSION 0.2.4 // TODO: Replace with `version` from `package.json`
 const SUPPORTED_VERSION = '1.5.2'
 const server = new api.WebServer()
 const invalid = cavalry.versionLessThan(SUPPORTED_VERSION)

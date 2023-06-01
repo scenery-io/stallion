@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
+## [0.2.5] - 2023-06-01
+
+### Added
+
+-   Types for Cavalry 1.5.6
+
 ## [0.2.4] - 2023-04-28
 
 ### Fixed
