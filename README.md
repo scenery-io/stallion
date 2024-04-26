@@ -6,7 +6,7 @@
 
 VSCode extension to send scripts to [Cavalry](https://cavalry.scenegroup.co/).
 
-> **Warning**  
+> [!NOTE]
 > This extension is still in beta. Please report any issues you run into.
 
 ## Features
@@ -26,7 +26,7 @@ VSCode extension to send scripts to [Cavalry](https://cavalry.scenegroup.co/).
 
 ## Usage
 
-To send scripts to Cavalry the Stallion script panel needs to be open in Cavalry. After the extension is installed the Stallion script should be available in Cavalry via `Scripts > Stallion`.
+To send scripts to Cavalry the Stallion script needs to be open in Cavalry. After the extension is installed, the Stallion script should be available in Cavalry via `Scripts > Stallion`.
 
 The VSCode extension exposes the following commands to the Command Palette (`View > Command Palette`).
 
@@ -44,21 +44,19 @@ The VSCode extension exposes the following commands to the Command Palette (`Vie
 1.  ### `Insert Cavalry Types`
     This will enable auto-complete for Cavalry's scripting API. It inserts a comment at the top of the open editor which references the latest [cavalry-types](https://github.com/scenery-io/cavalry-types).
 
-<!-- ## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
--   `myExtension.enable`: Enable/disable this extension.
--   `myExtension.thing`: Set to `blah` to do something. -->
-
 ## Known Issues
 
 1. The server address and port are hardcoded (`127.0.0.1:8080`). Make sure nothing else is using this port.
 1. `ui.scriptLocation` returns a temporary path if the document in VSCode hasn't been saved.
+
+## Sponsors
+
+Huge thanks to Cavalry for sponsoring this project! Interested in sponsoring? Send us [a message](https://scenery.io/support).
+
+<picture width="400">
+  <source media="(prefers-color-scheme: dark)" srcset="./images/cavalry-white.png">
+  <img alt="Cavalry" src="./images/cavalry-black.png" width="300">
+</picture>
 
 #### Icon Credits
 
