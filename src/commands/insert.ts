@@ -2,22 +2,21 @@ import { window, Position, extensions, languages } from 'vscode'
 import { publisher, name } from '../../package.json'
 
 export default async () => {
-	const editor = window.activeTextEditor
-	const doc = editor?.document
-
-	if (!doc) {
-		return window.showWarningMessage('No active document')
-	}
-
-	if (doc.languageId !== 'javascript') {
-		languages.setTextDocumentLanguage(doc, 'javascript')
-		window.showInformationMessage('Language set to JavaScript')
-	}
-
 	try {
+		const editor = window.activeTextEditor
+		const doc = editor?.document
+		if (!doc) {
+			return window.showWarningMessage('No active document')
+		}
+		if (doc.languageId !== 'javascript') {
+			languages.setTextDocumentLanguage(doc, 'javascript')
+			window.showInformationMessage('Language set to JavaScript')
+		}
 		const extensionId = [publisher, name].join('.')
 		const stallion = extensions.getExtension(extensionId)
-		if (!stallion) throw new Error(`Extension not found: ${extensionId}`)
+		if (!stallion) {
+			throw new Error(`Extension not found: ${extensionId}`)
+		}
 		const extPath = stallion.extensionPath
 		const pkgName = '@scenery/cavalry-types'
 		const path = [extPath, 'node_modules', pkgName, 'index.d.ts'].join('/')

@@ -12,6 +12,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
+## [0.3.0] - 2024-08-05
+
+### Added
+
+-   Send to Cavalry as expression (JavaScript and SkSL)
+-   Send data to Stallion from other tools
+-   Link to documentation in the Stallion UI
+
+### Changed
+
+-   The data object expected by Stallion
+
 ## [0.2.5] - 2023-06-01
 
 ### Added

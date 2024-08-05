@@ -2,7 +2,7 @@
 	"name": "cavalry-bridge",
 	"displayName": "Stallion",
 	"description": "A scripting bridge for Cavalry",
-	"version": "0.2.5",
+	"version": "0.3.0",
 	"main": "./out/main.js",
 	"publisher": "Scenery",
 	"repository": {
@@ -22,12 +22,16 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "stallion.post",
-				"title": "Send To Cavalry"
+				"title": "Send To Cavalry",
+				"command": "stallion.post"
 			},
 			{
-				"command": "stallion.insert",
-				"title": "Insert Cavalry Types"
+				"title": "Send To Cavalry As…",
+				"command": "stallion.postas"
+			},
+			{
+				"title": "Insert Cavalry Types",
+				"command": "stallion.insert"
 			}
 		]
 	},
