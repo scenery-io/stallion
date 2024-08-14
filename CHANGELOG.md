@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+-   Removal of Triple-Slash Directives in expressions
+
 ### Fixed
 
 -   Scripts ran by `api.exec` not wrapped in an IIFE

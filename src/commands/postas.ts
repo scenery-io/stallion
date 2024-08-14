@@ -44,11 +44,6 @@ export default async (context: ExtensionContext) => {
 				type: 'skslShader',
 				iconPath: Uri.file(join(imagePath, 'skslShader@2x.png')),
 			},
-			// {
-			// 	label: 'Script',
-			// 	type: 'script',
-			// 	iconPath: new ThemeIcon('gist'),
-			// },
 		])
 		if (!choice) {
 			return
@@ -59,7 +54,11 @@ export default async (context: ExtensionContext) => {
 		) {
 			window.showWarningMessage('Language is not JavaScript')
 		}
-		await post({ type: choice.type, code: doc.getText() })
+		const directives = /\/\/\/\s<reference.+\/>(\r?\n|$)/g
+		await post({
+			type: choice.type,
+			code: doc.getText().replace(directives, ''),
+		})
 	} catch (error) {
 		console.error(error)
 		window.showErrorMessage(error.message)
