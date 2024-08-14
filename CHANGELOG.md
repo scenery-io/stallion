@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+-   Scripts ran by `api.exec` not wrapped in an IIFE
 -   Comments on last line breaking script execution
 
 ## [0.3.0] - 2024-08-05

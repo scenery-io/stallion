@@ -46,7 +46,10 @@ class Callbacks {
 				success = ui.runFileScript(path)
 			}
 			if (code && !path) {
-				success = api.exec('io.scenery.stallion', code)
+				success = api.exec(
+					'io.scenery.stallion',
+					`(function() { ${code} \n})()`
+				)
 			}
 			if (success) {
 				return console.log('Stallion: Script successfully executed')
