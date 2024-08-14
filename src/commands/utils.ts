@@ -33,7 +33,7 @@ export async function post(data: Data) {
 
 export async function writeScript(doc: TextDocument) {
 	const text = doc.getText()
-	const script = `(function() { ${text} })()`
+	const script = `(function() { ${text} \n})()`
 	const saved = !doc.isUntitled
 	const showUI = text.includes('ui.show()')
 	let path = await temporaryWrite(script, { extension: 'js' })
