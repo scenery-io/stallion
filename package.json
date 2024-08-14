@@ -2,7 +2,7 @@
 	"name": "cavalry-bridge",
 	"displayName": "Stallion",
 	"description": "A scripting bridge for Cavalry",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"main": "./out/main.js",
 	"publisher": "Scenery",
 	"repository": {

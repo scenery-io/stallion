@@ -1,4 +1,4 @@
-// VERSION 0.3.0
+// VERSION 0.3.1
 const SUPPORTED_VERSION = "1.5.2";
 const server = new api.WebServer();
 const invalid = cavalry.versionLessThan(SUPPORTED_VERSION);
@@ -41,7 +41,11 @@ class Callbacks {
         success = ui.runFileScript(path);
       }
       if (code && !path) {
-        success = api.exec("io.scenery.stallion", code);
+        success = api.exec(
+          "io.scenery.stallion",
+          `(function() { ${code} 
+})()`
+        );
       }
       if (success) {
         return console.log("Stallion: Script successfully executed");
