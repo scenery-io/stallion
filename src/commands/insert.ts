@@ -17,7 +17,7 @@ export default async () => {
 		if (!stallion) {
 			throw new Error(`Extension not found: ${extensionId}`)
 		}
-		const extPath = stallion.extensionPath
+		const extPath = stallion.extensionPath.replaceAll('\\', '/')
 		const pkgName = '@scenery/cavalry-types'
 		const path = [extPath, 'node_modules', pkgName, 'index.d.ts'].join('/')
 		const snippet = `/// <reference path="${path}"/>\n\n`
