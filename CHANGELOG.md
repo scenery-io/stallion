@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
+## [0.4.0] - 2025-11-03
+
+### Added
+
+-   Send to Cavalry as SkSL Filter
+
 ## [0.3.1] - 2024-08-14
 
 ### Added

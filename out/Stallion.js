@@ -1,5 +1,5 @@
-// VERSION 0.3.1
-const SUPPORTED_VERSION = "1.5.2";
+// VERSION 0.4.0
+const SUPPORTED_VERSION = "2.4.0";
 const server = new api.WebServer();
 const invalid = cavalry.versionLessThan(SUPPORTED_VERSION);
 if (invalid) {
@@ -53,7 +53,7 @@ class Callbacks {
         return console.error("Stallion: Script failed to execute");
       }
     }
-    if (type.startsWith("javaScript") || type === "skslShader") {
+    if (type.startsWith("javaScript") || type.startsWith("sksl")) {
       let selection = api.getSelection();
       if (!selection.length) {
         const layerId = api.create(type);
@@ -63,7 +63,7 @@ class Callbacks {
       if (type === "javaScriptShape") {
         attr = "generator.expression";
       }
-      if (type === "skslShader") {
+      if (type.startsWith("sksl")) {
         attr = "code";
       }
       for (const layerId of selection) {
