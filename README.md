@@ -52,6 +52,7 @@ The VSCode extension exposes the following commands to the Command Palette (`Vie
     -   JavaScript Deformer
     -   JavaScript Emitter
     -   SkSL Shader
+    -   SkSL Filter
 
 1.  ### Insert Cavalry Types
 
@@ -85,10 +86,11 @@ String. The type of code that's sent. Typically one of the following:
 -   `javaScriptDeformer`
 -   `javaScriptEmitter`
 -   `skslShader`
+-   `skslFilter`
 
 ### `code`
 
-String. Required when `type` is a JavaScript layer or SkSL Shader.
+String. Required when `type` is a JavaScript layer or SkSL layer.
 
 The expression that should be applied to a layer or the code that should be executed when `type` is `script`.
 

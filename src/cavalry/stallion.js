@@ -1,4 +1,4 @@
-const SUPPORTED_VERSION = '1.5.2'
+const SUPPORTED_VERSION = '2.4.0'
 const server = new api.WebServer()
 const invalid = cavalry.versionLessThan(SUPPORTED_VERSION)
 
@@ -30,7 +30,7 @@ class Callbacks {
 			)
 		}
 
-		// NOTE: Supports `path` on its own for backwards compatibility
+		// NOTE: Supports `path` for backwards compatibility
 		if (type === 'script' || path) {
 			let success = false
 			if (code && path) {
@@ -58,7 +58,7 @@ class Callbacks {
 			}
 		}
 
-		if (type.startsWith('javaScript') || type === 'skslShader') {
+		if (type.startsWith('javaScript') || type.startsWith('sksl')) {
 			let selection = api.getSelection()
 			if (!selection.length) {
 				const layerId = api.create(type)
@@ -68,7 +68,7 @@ class Callbacks {
 			if (type === 'javaScriptShape') {
 				attr = 'generator.expression'
 			}
-			if (type === 'skslShader') {
+			if (type.startsWith('sksl')) {
 				attr = 'code'
 			}
 			for (const layerId of selection) {

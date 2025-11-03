@@ -44,6 +44,11 @@ export default async (context: ExtensionContext) => {
 				type: 'skslShader',
 				iconPath: Uri.file(join(imagePath, 'skslShader@2x.png')),
 			},
+			{
+				label: 'SkSL Filter',
+				type: 'skslFilter',
+				iconPath: Uri.file(join(imagePath, 'skslFilter@2x.png')),
+			},
 		])
 		if (!choice) {
 			return
