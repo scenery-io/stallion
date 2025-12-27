@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
-## [UNRELEASED]
+## [0.6.0] - 2025-12-27
 
 ### Added
 
@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 -   Commands only show when an editor is active
--   Whitespace before and after expressions gets trimmed
+-   Whitespace gets trimmed before and after an expression
 
 ## [0.5.0] - 2025-12-27
 
