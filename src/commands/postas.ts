@@ -1,5 +1,5 @@
 import { join } from 'path'
-import { window, Uri, ExtensionContext } from 'vscode'
+import { window, Uri, ExtensionContext, QuickPickItemKind } from 'vscode'
 import { post, stripTypes } from './utils'
 
 export default async (context: ExtensionContext) => {
@@ -10,6 +10,10 @@ export default async (context: ExtensionContext) => {
 		}
 		const imagePath = join(context.extensionPath, 'images')
 		const choice = await window.showQuickPick([
+			{
+				label: 'Layers',
+				kind: QuickPickItemKind.Separator,
+			},
 			{
 				label: 'JavaScript Shape',
 				type: 'javaScriptShape',
@@ -49,14 +53,34 @@ export default async (context: ExtensionContext) => {
 				type: 'skslFilter',
 				iconPath: Uri.file(join(imagePath, 'skslFilter@2x.png')),
 			},
+			{
+				label: 'Renders',
+				kind: QuickPickItemKind.Separator,
+			},
+			{
+				label: 'Setup Script',
+				type: 'renderSetupExpression',
+				iconPath: Uri.file(join(imagePath, 'dynamicRendering@2x.png')),
+			},
+			{
+				label: 'Pre-Render Script',
+				type: 'preRenderExpression',
+				iconPath: Uri.file(join(imagePath, 'dynamicRendering@2x.png')),
+			},
+			{
+				label: 'Post-Render Script',
+				type: 'postRenderExpression',
+				iconPath: Uri.file(join(imagePath, 'dynamicRendering@2x.png')),
+			},
 		])
 		if (!choice) {
 			return
 		}
+		const type = choice.type.toLowerCase()
 		if (
-			choice.type.toLowerCase().includes('script') &&
 			doc.languageId !== 'javascript' &&
-			doc.languageId !== 'typescript'
+			doc.languageId !== 'typescript' &&
+			(type.startsWith('javascript') || type.includes('render'))
 		) {
 			window.showWarningMessage(
 				'Language is not JavaScript or TypeScript'

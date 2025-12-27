@@ -64,12 +64,12 @@ class Callbacks {
 				const layerId = api.create(type)
 				selection = [layerId]
 			}
-			let attr = 'expression'
+			let attribute = 'expression'
 			if (type === 'javaScriptShape') {
-				attr = 'generator.expression'
+				attribute = 'generator.expression'
 			}
 			if (type.startsWith('sksl')) {
-				attr = 'code'
+				attribute = 'code'
 			}
 			for (const layerId of selection) {
 				const layerType = api.getLayerType(layerId)
@@ -80,9 +80,22 @@ class Callbacks {
 					)
 					continue
 				}
-				api.set(layerId, { [attr]: code })
+				api.set(layerId, { [attribute]: code })
 			}
 			return console.log(`Stallion: Successfully applied expression`)
+		}
+
+		if (type.toLowerCase().includes('render')) {
+			const items = api.getRenderQueueItems()
+			for (const layerId of items) {
+				const selected = api.get(layerId, 'selected')
+				if (selected) {
+					api.set(layerId, { [type]: code })
+				}
+			}
+			return console.log(
+				`Stallion: Successfully applied render expression`
+			)
 		}
 
 		console.error(`Stallion: Unexpected type '${type}'`)

@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+-   Send to Cavalry as Setup, Pre-Render and Post-Render Script
+
 ### Changed
 
 -   Commands only show when an editor is active
