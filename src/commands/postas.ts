@@ -1,5 +1,5 @@
 import { join } from 'path'
-import { window, Uri, ExtensionContext, ThemeIcon } from 'vscode'
+import { window, Uri, ExtensionContext } from 'vscode'
 import { post, stripTypes } from './utils'
 
 export default async (context: ExtensionContext) => {

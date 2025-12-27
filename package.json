@@ -44,7 +44,7 @@
 		"lint": "eslint .",
 		"pretest": "npm run lint",
 		"test": "node ./test/runTest.js",
-		"publish": "npx vsce publish",
+		"publish": "npx @vscode/vsce publish",
 		"cavalry": "node ./build/cavalry.js"
 	},
 	"prettier": {
@@ -58,21 +58,17 @@
 	},
 	"dependencies": {
 		"@scenery/cavalry-types": "^0.5.0",
-		"firstline": "^2.0.2",
 		"tempy": "^3.0.0"
 	},
 	"devDependencies": {
-		"@types/firstline": "^2.0.2",
-		"@types/glob": "^8.0.0",
-		"@types/mocha": "^10.0.0",
-		"@types/node": "16.x",
-		"@types/vscode": "^1.72.0",
-		"@vscode/test-electron": "^2.1.5",
-		"esbuild": "^0.15.14",
-		"eslint": "^8.24.0",
-		"glob": "^8.0.3",
-		"mocha": "^10.0.0",
-		"typescript": "^4.8.4",
-		"vsce": "^2.15.0"
+		"@types/node": "^25.0.3",
+		"@types/vscode": "^1.107.0",
+		"@vscode/test-electron": "^2.5.2",
+		"@vscode/vsce": "^3.7.1",
+		"esbuild": "^0.27.2",
+		"eslint": "^9.39.2",
+		"glob": "^13.0.0",
+		"mocha": "^11.7.5",
+		"typescript": "^5.9.3"
 	}
 }

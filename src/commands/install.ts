@@ -3,7 +3,7 @@ import { copyFile, mkdir } from 'fs/promises'
 import { homedir, platform } from 'os'
 import { join } from 'path'
 import { window } from 'vscode'
-import firstline from 'firstline'
+import { firstline } from './utils.js'
 import { version } from '../../package.json'
 
 export default async () => {

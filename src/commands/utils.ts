@@ -1,6 +1,7 @@
 import { temporaryWrite } from 'tempy'
 import { workspace, window, TextDocument } from 'vscode'
 import { stripTypeScriptTypes } from 'module'
+import { createReadStream } from 'fs'
 
 export type Data = {
 	type: string
@@ -56,4 +57,37 @@ export async function writeScript(doc: TextDocument) {
 		return doc.fileName
 	}
 	return await temporaryWrite(script, { extension: 'js' })
+}
+
+type Options = {
+	encoding?: string
+	lineEnding?: string
+}
+
+// NOTE: Copied from https://github.com/pensierinmusica/firstline
+export function firstline(path: string, options: Options = {}) {
+	return new Promise<string>((resolve, reject) => {
+		const stream = createReadStream(
+			path,
+			(options.encoding || 'utf-8') as BufferEncoding
+		)
+		let acc = ''
+		let pos = 0
+		let index
+		stream
+			.on('data', (chunk) => {
+				index = chunk.indexOf(options.lineEnding || '\n')
+				acc += chunk
+				if (index === -1) {
+					pos += chunk.length
+				} else {
+					pos += index
+					stream.close()
+				}
+			})
+			.on('close', () =>
+				resolve(acc.slice(acc.charCodeAt(0) === 0xfeff ? 1 : 0, pos))
+			)
+			.on('error', (err) => reject(err))
+	})
 }
