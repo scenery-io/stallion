@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
--   Increased required `vscode` version to 1.101.0
+-   Increased the minimum required `vscode` version to 1.101.0
 
 ## [0.4.0] - 2025-11-03
 
