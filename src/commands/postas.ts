@@ -63,7 +63,7 @@ export default async (context: ExtensionContext) => {
 			)
 		}
 		const directives = /\/\/\/\s<reference.+\/>(\r?\n|$)/g
-		const text = doc.getText().replace(directives, '')
+		const text = doc.getText().replace(directives, '').trim()
 		const code = doc.languageId === 'typescript' ? stripTypes(text) : text
 		await post({ type: choice.type, code })
 	} catch (error) {
