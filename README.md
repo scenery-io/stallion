@@ -44,6 +44,8 @@ The VSCode extension exposes the following commands to the Command Palette (`Vie
 
     This will send the text from the active editor as an expression to Cavalry. It will apply the expression to the selected layers of the chosen type. If there is no selection it will create a layer of the chosen type.
 
+    Render Scripts will be applied to all render queue items that are enabled, ie. the checkmark is visible. The Render Manager does not have to be open to apply Render Scripts.
+
     Choose to send it as:
 
     -   JavaScript Shape
@@ -53,6 +55,9 @@ The VSCode extension exposes the following commands to the Command Palette (`Vie
     -   JavaScript Emitter
     -   SkSL Shader
     -   SkSL Filter
+    -   Setup Script
+    -   Pre-Render Script
+    -   Post-Render Script
 
 1.  ### Insert Cavalry Types
 
@@ -87,12 +92,15 @@ String. The type of code that's sent. Typically one of the following:
 -   `javaScriptEmitter`
 -   `skslShader`
 -   `skslFilter`
+-   `renderSetupExpression`
+-   `preRenderExpression`
+-   `postRenderExpression`
 
 ### `code`
 
-String. Required when `type` is a JavaScript layer or SkSL layer.
+String. Required when `type` is a JavaScript layer, SkSL layer or a Render script.
 
-The expression that should be applied to a layer or the code that should be executed when `type` is `script`.
+The expression that should be applied to a layer—or the code that should be executed when `type` is `script`.
 
 > [!IMPORTANT]
 > Sending UI scripts through `code` will result in the UI being appended to the Stallion UI. Use [`path`](#path) instead.
