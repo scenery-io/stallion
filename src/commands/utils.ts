@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { temporaryWrite } from 'tempy'
 import { workspace, window, TextDocument } from 'vscode'
+import { stripTypeScriptTypes } from 'module'
 
 export type Data = {
 	type: string
@@ -31,17 +32,27 @@ export async function post(data: Data) {
 	}
 }
 
+export function stripTypes(text: string) {
+	if (stripTypeScriptTypes) {
+		return stripTypeScriptTypes(text)
+	}
+	window.showWarningMessage(
+		'Type stripping is not supported. Expect errors in Cavalry.'
+	)
+	return text
+}
+
 export async function writeScript(doc: TextDocument) {
 	const text = doc.getText()
-	const script = `(function() { ${text} \n})()`
+	const code = doc.languageId === 'typescript' ? stripTypes(text) : text
+	const script = `(function() { ${code} \n})()`
 	const saved = !doc.isUntitled
-	const showUI = text.includes('ui.show()')
-	let path = await temporaryWrite(script, { extension: 'js' })
-	if (saved && showUI) {
-		path = doc.fileName
-	}
-	if (text.includes('ui.add(') && !showUI) {
+	const show = code.includes('ui.show()')
+	if (code.includes('ui.add(') && !show) {
 		window.showWarningMessage('Script is missing `ui.show()`')
 	}
-	return path
+	if (saved && show) {
+		return doc.fileName
+	}
+	return await temporaryWrite(script, { extension: 'js' })
 }

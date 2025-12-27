@@ -7,8 +7,13 @@ export default async () => {
 		if (!doc) {
 			return window.showErrorMessage('No active document')
 		}
-		if (doc.languageId !== 'javascript') {
-			window.showWarningMessage('Language is not JavaScript')
+		if (
+			doc.languageId !== 'javascript' &&
+			doc.languageId !== 'typescript'
+		) {
+			window.showWarningMessage(
+				'Language is not JavaScript or TypeScript'
+			)
 		}
 		const path = await writeScript(doc)
 		await post({ type: 'script', path })

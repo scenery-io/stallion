@@ -1,6 +1,6 @@
 import { join } from 'path'
 import { window, Uri, ExtensionContext, ThemeIcon } from 'vscode'
-import { post } from './utils'
+import { post, stripTypes } from './utils'
 
 export default async (context: ExtensionContext) => {
 	try {
@@ -55,15 +55,17 @@ export default async (context: ExtensionContext) => {
 		}
 		if (
 			choice.type.toLowerCase().includes('script') &&
-			doc.languageId !== 'javascript'
+			doc.languageId !== 'javascript' &&
+			doc.languageId !== 'typescript'
 		) {
-			window.showWarningMessage('Language is not JavaScript')
+			window.showWarningMessage(
+				'Language is not JavaScript or TypeScript'
+			)
 		}
 		const directives = /\/\/\/\s<reference.+\/>(\r?\n|$)/g
-		await post({
-			type: choice.type,
-			code: doc.getText().replace(directives, ''),
-		})
+		const text = doc.getText().replace(directives, '')
+		const code = doc.languageId === 'typescript' ? stripTypes(text) : text
+		await post({ type: choice.type, code })
 	} catch (error) {
 		console.error(error)
 		window.showErrorMessage(error.message)
