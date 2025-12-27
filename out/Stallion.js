@@ -1,4 +1,4 @@
-// VERSION 0.4.0
+// VERSION 0.5.0
 const SUPPORTED_VERSION = "2.4.0";
 const server = new api.WebServer();
 const invalid = cavalry.versionLessThan(SUPPORTED_VERSION);
