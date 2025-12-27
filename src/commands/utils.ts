@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { temporaryWrite } from 'tempy'
 import { workspace, window, TextDocument } from 'vscode'
 import { stripTypeScriptTypes } from 'module'
@@ -16,14 +15,16 @@ export async function post(data: Data) {
 			.get('address', '127.0.0.1')
 		const port = workspace.getConfiguration('stallion').get('port', 8080)
 		const server = `http://${address}:${port}/post`
-		const result = await axios.post(server, data)
-		if (result?.statusText === 'OK') {
-			window.showInformationMessage('Successfully sent to Cavalry')
-		} else {
+		const result = await fetch(server, {
+			method: 'POST',
+			body: JSON.stringify(data),
+		})
+		if (!result.ok) {
 			throw new Error('Failed to send to Cavalry')
 		}
+		window.showInformationMessage('Successfully sent to Cavalry')
 	} catch (error) {
-		if (error.code === 'ECONNREFUSED') {
+		if (error.cause?.code === 'ECONNREFUSED') {
 			return window.showErrorMessage(
 				'Failed to send. Is Stallion open in Cavalry?'
 			)

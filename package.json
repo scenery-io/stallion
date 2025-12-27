@@ -58,7 +58,6 @@
 	},
 	"dependencies": {
 		"@scenery/cavalry-types": "^0.5.0",
-		"axios": "^1.1.3",
 		"firstline": "^2.0.2",
 		"tempy": "^3.0.0"
 	},
