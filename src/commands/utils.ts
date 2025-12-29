@@ -1,7 +1,10 @@
-import { temporaryWrite } from 'tempy'
 import { workspace, window, TextDocument } from 'vscode'
 import { stripTypeScriptTypes } from 'module'
 import { createReadStream } from 'fs'
+import { realpath, writeFile } from 'fs/promises'
+import { tmpdir } from 'os'
+import { join } from 'path'
+import { randomUUID } from 'crypto'
 
 export type Data = {
 	type: string
@@ -44,6 +47,13 @@ export function stripTypes(text: string) {
 	return text
 }
 
+export async function writeTemp(content: string) {
+	const tempdir = await realpath(tmpdir())
+	const filename = join(tempdir, `${randomUUID()}.js`)
+	await writeFile(filename, content)
+	return filename
+}
+
 export async function writeScript(doc: TextDocument) {
 	const text = doc.getText()
 	const code = doc.languageId === 'typescript' ? stripTypes(text) : text
@@ -56,7 +66,7 @@ export async function writeScript(doc: TextDocument) {
 	if (saved && show) {
 		return doc.fileName
 	}
-	return await temporaryWrite(script, { extension: 'js' })
+	return await writeTemp(script)
 }
 
 type Options = {
