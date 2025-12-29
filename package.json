@@ -24,17 +24,17 @@
 			{
 				"title": "Send To Cavalry",
 				"command": "stallion.post",
-				"enablement": "editorFocus"
+				"enablement": "activeEditor"
 			},
 			{
 				"title": "Send To Cavalry As…",
 				"command": "stallion.postas",
-				"enablement": "editorFocus"
+				"enablement": "activeEditor"
 			},
 			{
 				"title": "Insert Cavalry Types",
 				"command": "stallion.insert",
-				"enablement": "editorFocus"
+				"enablement": "activeEditor"
 			}
 		]
 	},
