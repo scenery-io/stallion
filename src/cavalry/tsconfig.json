@@ -1,9 +1,6 @@
 {
+	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"noEmit": true,
-		"allowJs": true,
-		"checkJs": true,
-		"moduleDetection": "force",
 		"types": ["@scenery/cavalry-types"]
 	}
 }

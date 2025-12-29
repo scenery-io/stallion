@@ -10,14 +10,16 @@
 			"type": "extensionHost",
 			"request": "launch",
 			"args": [
-				"--extensionDevelopmentPath=${workspaceFolder}",
-			],
+				"--disable-extensions",
+				"--extensionDevelopmentPath=${workspaceFolder}"
+			]
 		},
 		{
 			"name": "Extension Tests",
 			"type": "extensionHost",
 			"request": "launch",
 			"args": [
+				"--disable-extensions",
 				"--extensionDevelopmentPath=${workspaceFolder}",
 				"--extensionTestsPath=${workspaceFolder}/test/suite/index"
 			]

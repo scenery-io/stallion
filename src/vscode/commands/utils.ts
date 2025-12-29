@@ -30,7 +30,7 @@ export async function post(data: Data) {
 	} catch (error) {
 		if (error.cause?.code === 'ECONNREFUSED') {
 			return window.showErrorMessage(
-				'Failed to send. Is Stallion open in Cavalry?'
+				'Failed to send. Is Stallion open in Cavalry?',
 			)
 		}
 		throw error
@@ -42,7 +42,7 @@ export function stripTypes(text: string) {
 		return stripTypeScriptTypes(text)
 	}
 	window.showWarningMessage(
-		'Type stripping is not supported. Expect errors in Cavalry.'
+		'Type stripping is not supported. Expect errors in Cavalry.',
 	)
 	return text
 }
@@ -79,7 +79,7 @@ export function firstline(path: string, options: Options = {}) {
 	return new Promise<string>((resolve, reject) => {
 		const stream = createReadStream(
 			path,
-			(options.encoding || 'utf-8') as BufferEncoding
+			(options.encoding || 'utf-8') as BufferEncoding,
 		)
 		let acc = ''
 		let pos = 0
@@ -96,7 +96,7 @@ export function firstline(path: string, options: Options = {}) {
 				}
 			})
 			.on('close', () =>
-				resolve(acc.slice(acc.charCodeAt(0) === 0xfeff ? 1 : 0, pos))
+				resolve(acc.slice(acc.charCodeAt(0) === 0xfeff ? 1 : 0, pos)),
 			)
 			.on('error', (err) => reject(err))
 	})

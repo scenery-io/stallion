@@ -28,14 +28,14 @@ export default async (context: ExtensionContext) => {
 				label: 'JavaScript Modifier',
 				type: 'javaScriptModifier',
 				iconPath: Uri.file(
-					join(imagePath, 'javaScriptModifier@2x.png')
+					join(imagePath, 'javaScriptModifier@2x.png'),
 				),
 			},
 			{
 				label: 'JavaScript Deformer',
 				type: 'javaScriptDeformer',
 				iconPath: Uri.file(
-					join(imagePath, 'javaScriptDeformer@2x.png')
+					join(imagePath, 'javaScriptDeformer@2x.png'),
 				),
 			},
 			{
@@ -83,7 +83,7 @@ export default async (context: ExtensionContext) => {
 			(type.startsWith('javascript') || type.includes('render'))
 		) {
 			window.showWarningMessage(
-				'Language is not JavaScript or TypeScript'
+				'Language is not JavaScript or TypeScript',
 			)
 		}
 		const directives = /\/\/\/\s<reference.+\/>(\r?\n|$)/g

@@ -1,8 +1,0 @@
-{
-	"compilerOptions": {
-		"noEmit": true,
-		"resolveJsonModule": true,
-		"esModuleInterop": true
-	},
-	"exclude": ["cavalry"]
-}

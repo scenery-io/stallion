@@ -1,5 +1,5 @@
 import { window, Position, extensions, languages } from 'vscode'
-import { publisher, name } from '../../package.json'
+import { publisher, name } from '../../../package.json'
 
 export default async () => {
 	try {
@@ -8,7 +8,10 @@ export default async () => {
 		if (!doc) {
 			return window.showWarningMessage('No active document')
 		}
-		if (doc.languageId !== 'javascript') {
+		if (
+			doc.languageId !== 'javascript' &&
+			doc.languageId !== 'typescript'
+		) {
 			languages.setTextDocumentLanguage(doc, 'javascript')
 			window.showInformationMessage('Language set to JavaScript')
 		}
