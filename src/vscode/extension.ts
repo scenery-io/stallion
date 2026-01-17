@@ -1,19 +1,18 @@
 import { ExtensionContext, commands } from 'vscode'
-import postCommand from './commands/post.ts'
-import insertCommand from './commands/insert.ts'
-import postAsCommand from './commands/postas.ts'
+import post from './commands/post.ts'
+import postas from './commands/postas.ts'
+import insert from './commands/insert.ts'
 import install from './commands/install.ts'
 
 // Your extension is activated the very first time the command is executed
 async function activate(context: ExtensionContext) {
 	console.log('Stallion activated')
 	await install()
-	const post = commands.registerCommand('stallion.post', postCommand)
-	const javascript = commands.registerCommand('stallion.postas', () =>
-		postAsCommand(context),
+	context.subscriptions.push(
+		commands.registerCommand('stallion.post', post),
+		commands.registerCommand('stallion.postas', () => postas(context)),
+		commands.registerCommand('stallion.insert', insert),
 	)
-	const insert = commands.registerCommand('stallion.insert', insertCommand)
-	context.subscriptions.push(post, insert, javascript)
 }
 
 // This method is called when your extension is deactivated
