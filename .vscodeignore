@@ -4,3 +4,4 @@
 !dist/*.js
 !LICENSE
 !*.md
+!node_modules/@scenery/cavalry-types
