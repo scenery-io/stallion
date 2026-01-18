@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
+## [0.6.3] - 2026-01-18
+
+### Fixed
+
+-   Cavalry types were ignored in the extension package
+
 ## [0.6.2] - 2026-01-18
 
 ### Fixed

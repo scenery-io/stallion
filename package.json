@@ -3,7 +3,7 @@
 	"name": "cavalry-bridge",
 	"displayName": "Stallion",
 	"description": "Scripting bridge for Cavalry",
-	"version": "0.6.2",
+	"version": "0.6.3",
 	"publisher": "Scenery",
 	"main": "./dist/extension.js",
 	"icon": "images/icon.png",
