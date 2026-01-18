@@ -12,16 +12,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
+## [0.6.2] - 2026-01-18
+
+### Fixed
+
+-   Cavalry types did not get installed
+
 ## [0.6.1] - 2026-01-17
 
 
 ### Changed
 
 -   Cavalry script is now minified
-
-### Removed
-
--   Dependency `tempy`
 
 ### Fixed
 

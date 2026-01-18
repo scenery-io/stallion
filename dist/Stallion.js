@@ -1,4 +1,4 @@
-// VERSION 0.6.1
+// VERSION 0.6.2
 // This is the compiled version
 // Read the source at https://github.com/scenery-io/stallion.git
 (()=>{var n=class{#e;constructor(a){this.#e=a}onPost=()=>{let a=this.#e.getNextPost(),u;try{u=JSON.parse(a.result)}catch{return console.error("Failed to parse request as JSON")}console.log("Stallion: Data received");let{type:e,code:r,path:t}=u;if(!e&&!t)return console.error("Stallion: Missing/empty `type` key in request");if(!r&&!t)return console.error("Stallion: Missing/empty `code` or `path` key in request");if(e==="script"||t){if(r&&t&&console.warn("Stallion: `code` and `path` keys are both in the request, executing `path`"),t){if(!api.filePathExists(t))return console.error(`Stallion: No script found at ${t}`);if(ui.runFileScript(t))return console.log("Stallion: Script successfully executed")}return r&&!t&&api.exec("io.scenery.stallion",`(function() { ${r} 
