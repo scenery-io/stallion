@@ -8,10 +8,10 @@ VSCode extension to send scripts to [Cavalry](https://cavalry.scenegroup.co/).
 
 ## Features
 
--   Send scripts to Cavalry
--   Apply JavaScript expressions to JavaScript layers
+-   Send scripts and Render scripts to Cavalry
+-   Apply expressions to JavaScript- and SkSL layers
 -   Insert Cavalry's Typescript definitions
--   Automatically installs the Stallion script
+-   Installs the Stallion script automatically
 -   Functions as an API for other tools
 
 ## Requirements
