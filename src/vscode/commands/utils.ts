@@ -1,7 +1,7 @@
-import { workspace, window, TextDocument } from 'vscode'
+import { window, TextDocument } from 'vscode'
 import { stripTypeScriptTypes } from 'module'
 import { createReadStream } from 'fs'
-import { realpath, writeFile } from 'fs/promises'
+import { readFile, realpath, writeFile } from 'fs/promises'
 import { tmpdir } from 'os'
 import { join } from 'path'
 import { randomUUID } from 'crypto'
@@ -14,11 +14,10 @@ export type Data = {
 
 export async function post(data: Data) {
 	try {
-		const address = workspace
-			.getConfiguration('stallion')
-			.get('address', '127.0.0.1')
-		const port = workspace.getConfiguration('stallion').get('port', 8080)
-		const server = `http://${address}:${port}/post`
+		// TODO: Get correct path for mac and win
+		const content = await readFile('', 'utf-8')
+		const { port } = JSON.parse(content)
+		const server = `http://127.0.0.1:${port}/post`
 		const result = await fetch(server, {
 			method: 'POST',
 			body: JSON.stringify(data),

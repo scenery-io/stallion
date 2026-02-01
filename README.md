@@ -17,7 +17,7 @@ VSCode extension to send scripts to [Cavalry](https://cavalry.scenegroup.co/).
 ## Requirements
 
 -   [VSCode](https://code.visualstudio.com/)
--   [Cavalry](https://cavalry.scenegroup.co/) 1.5.2+
+-   [Cavalry](https://cavalry.scenegroup.co/) 2.5.0+
 
 ## Installation
 
