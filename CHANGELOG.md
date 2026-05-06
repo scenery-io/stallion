@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Fixed` for any bug fixes
 -   `Security` in case of vulnerabilities
 
+## [0.7.0] - 2026-05-06
+
+### Added
+
+-   Select a scripting context in `Insert Cavalry Types`
+-   Types for Cavalry 2.7.0
+
 ## [0.6.3] - 2026-01-18
 
 ### Fixed
@@ -25,7 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Cavalry types did not get installed
 
 ## [0.6.1] - 2026-01-17
-
 
 ### Changed
 

@@ -63,6 +63,19 @@ The VSCode extension exposes the following commands to the Command Palette (`Vie
 
     This will enable auto-complete for Cavalry's scripting API. It inserts a comment at the top of the open editor which references the latest [cavalry-types](https://github.com/scenery-io/cavalry-types).
 
+    Cavalry has various [scripting namespaces](https://cavalry.studio/docs/tech-info/scripting/scripting-getting-started/#modules) that can be used in specific contexts eg. JavaScript Layers, Render Scripts, etc.
+
+    Select one of the following contexts and it will expose only those types that are available in that context. The available contexts are:
+
+    - `script` for Scripts with or without UI
+    - `plugin` for Scripts that are part of a Plugin
+    - `shape` for JavaScript Shapes
+    - `deformer` for JavaScript Deformers
+    - `utility` for JavaScript Utilities
+    - `emitter` for JavaScript Particle Emitters
+    - `modifier` for JavaScript Particle Modifiers
+    - `render` for Setup, Pre- and Post-Render Scripts
+
 ## Known Issues
 
 -   The server address and port are hardcoded (`127.0.0.1:8080`). Make sure nothing else is using this port.
