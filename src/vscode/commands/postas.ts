@@ -13,11 +13,19 @@ export default async (context: ExtensionContext) => {
 			{
 				label: 'Layers',
 				kind: QuickPickItemKind.Separator,
+				type: '',
 			},
 			{
 				label: 'JavaScript Shape',
 				type: 'javaScriptShape',
 				iconPath: Uri.file(join(imagePath, 'javaScriptShape@2x.png')),
+			},
+			{
+				label: 'JavaScript Deformer',
+				type: 'javaScriptDeformer',
+				iconPath: Uri.file(
+					join(imagePath, 'javaScriptDeformer@2x.png'),
+				),
 			},
 			{
 				label: 'JavaScript Utility',
@@ -29,13 +37,6 @@ export default async (context: ExtensionContext) => {
 				type: 'javaScriptModifier',
 				iconPath: Uri.file(
 					join(imagePath, 'javaScriptModifier@2x.png'),
-				),
-			},
-			{
-				label: 'JavaScript Deformer',
-				type: 'javaScriptDeformer',
-				iconPath: Uri.file(
-					join(imagePath, 'javaScriptDeformer@2x.png'),
 				),
 			},
 			{
@@ -56,6 +57,7 @@ export default async (context: ExtensionContext) => {
 			{
 				label: 'Renders',
 				kind: QuickPickItemKind.Separator,
+				type: '',
 			},
 			{
 				label: 'Setup Script',

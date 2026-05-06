@@ -11,7 +11,7 @@ async function activate(context: ExtensionContext) {
 	context.subscriptions.push(
 		commands.registerCommand('stallion.post', post),
 		commands.registerCommand('stallion.postas', () => postas(context)),
-		commands.registerCommand('stallion.insert', insert),
+		commands.registerCommand('stallion.insert', () => insert(context)),
 	)
 }
 
